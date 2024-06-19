@@ -67,9 +67,11 @@ class MyApp(QMainWindow, Ui_mainWindow):
     def pushButton_start_Clicked(self):
         if not QFileInfo(self.lineEdit.text()).isDir():
             QMessageBox.warning(None, "错误", "保存路径不合法！")
+            return 
 
         if len(self.textEdit.toPlainText()) == 0:
             QMessageBox.warning(None, "错误", "请输入文本！")
+            return
 
         voc = self.comboBox.currentText().replace("男 ", "")
         voc = voc.replace("女 ", "")
