@@ -8,6 +8,9 @@ from edge_tts import VoicesManager
 import asyncio
 from datetime import datetime
 from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt5.QtMultimedia import QMediaContent, QMediaPlayer
+from PyQt5.QtCore import QUrl
+import os
 
 async def update_character(comboBox) -> None:
     """Main function"""
@@ -54,8 +57,12 @@ class MyApp(QMainWindow, Ui_mainWindow):
 
         self.pushButton_select_dir.clicked.connect(self.pushButton_select_dir_Clicked)
         self.pushButton_start.clicked.connect(self.pushButton_start_Clicked)
+        self.pushButtonlisten.clicked.connect(self.pushButtonlisten_Clicked)
+        
 
         self.thread = WorkerThread()  
+        self.isListening = False
+        self.tmpPath = ""
         # 连接线程的信号到槽函数  
         self.thread.result_ready.connect(self.on_result_ready)  
 
@@ -98,8 +105,33 @@ class MyApp(QMainWindow, Ui_mainWindow):
             self.thread.quit()  
             self.thread.wait()  
 
-
+    def pushButtonlisten_Clicked(self):
+        self.tmpPath = QDir.currentPath()+ '/.tmp.mp3'
+        if len(self.textEdit.toPlainText()) == 0:
+            QMessageBox.warning(None, "错误", "请输入文本！")
+            return
+        txt = self.textEdit.toPlainText()
+        if(len(txt) > 20):
+            txt = txt[:20]
+        voc = self.comboBox.currentText().replace("男 ", "")
+        voc = voc.replace("女 ", "")
+        if self.isListening:
+            return
+        self.isListening = True
+        communicate = edge_tts.Communicate(txt, voc)
+        communicate.save_sync(self.tmpPath)
+        player = QMediaPlayer(self)
+        player.stateChanged.connect(self.handle_state_changed)
+        player.setMedia(QMediaContent(QUrl.fromLocalFile(self.tmpPath)))
+        player.play()
         
+        
+
+    def handle_state_changed(self, state):
+        if state == QMediaPlayer.StoppedState:
+            os.remove(self.tmpPath)
+            self.isListening = False
+
 
 
 

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'd:\pytkiner\ui.ui'
+# Form implementation generated from reading ui file 'd:\easytts\ui.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.9
 #
@@ -15,7 +15,13 @@ class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
         mainWindow.setObjectName("mainWindow")
         mainWindow.resize(824, 463)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("d:\\easytts\\icon.PNG"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        mainWindow.setWindowIcon(icon)
+        mainWindow.setAutoFillBackground(False)
+        mainWindow.setStyleSheet("#mainWindow{background:white}")
         self.centralwidget = QtWidgets.QWidget(mainWindow)
+        self.centralwidget.setStyleSheet("QWidget{background:white}")
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.centralwidget)
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
@@ -26,6 +32,7 @@ class Ui_mainWindow(object):
         self.frame = QtWidgets.QFrame(self.centralwidget)
         self.frame.setMinimumSize(QtCore.QSize(300, 0))
         self.frame.setMaximumSize(QtCore.QSize(300, 16777215))
+        self.frame.setStyleSheet("QFrame{background:white}")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
@@ -42,14 +49,60 @@ class Ui_mainWindow(object):
         self.horizontalLayout.setSpacing(6)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.pushButton_select_dir = QtWidgets.QPushButton(self.frame)
+        self.pushButton_select_dir.setStyleSheet("QPushButton {\n"
+"    font-family: \"Microsoft YaHei\";\n"
+"    font-size: 16px;\n"
+"    color: #ffffff;\n"
+"    background-color: rgb(206, 175, 36);\n"
+"    border-style: solid;\n"
+"    border-width: 2px;\n"
+"    border-color: gray;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+"\n"
+"QPushButton:hover{ background-color: #b4bd3a;}\n"
+"QPushButton:pressed{  background-color:  #a5ad35;}")
         self.pushButton_select_dir.setObjectName("pushButton_select_dir")
         self.horizontalLayout.addWidget(self.pushButton_select_dir)
         self.lineEdit = QtWidgets.QLineEdit(self.frame)
         self.lineEdit.setObjectName("lineEdit")
         self.horizontalLayout.addWidget(self.lineEdit)
         self.verticalLayout.addLayout(self.horizontalLayout)
+        self.pushButtonlisten = QtWidgets.QPushButton(self.frame)
+        self.pushButtonlisten.setMinimumSize(QtCore.QSize(0, 50))
+        self.pushButtonlisten.setStyleSheet("QPushButton {\n"
+"    font-family: \"Microsoft YaHei\";\n"
+"    font-size: 16px;\n"
+"    color: #ffffff;\n"
+"    background-color: rgb(206, 175, 36);\n"
+"    border-style: solid;\n"
+"    border-width: 2px;\n"
+"    border-color: gray;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+"\n"
+"QPushButton:hover{ background-color: #b4bd3a;}\n"
+"QPushButton:pressed{  background-color:  #a5ad35;}")
+        self.pushButtonlisten.setFlat(True)
+        self.pushButtonlisten.setObjectName("pushButtonlisten")
+        self.verticalLayout.addWidget(self.pushButtonlisten)
         self.pushButton_start = QtWidgets.QPushButton(self.frame)
         self.pushButton_start.setMinimumSize(QtCore.QSize(0, 50))
+        self.pushButton_start.setAutoFillBackground(False)
+        self.pushButton_start.setStyleSheet("QPushButton {\n"
+"    font-family: \"Microsoft YaHei\";\n"
+"    font-size: 16px;\n"
+"    color: #ffffff;\n"
+"    background-color: rgb(206, 175, 36);\n"
+"    border-style: solid;\n"
+"    border-width: 2px;\n"
+"    border-color: gray;\n"
+"    border: 1px solid gray;\n"
+"}\n"
+"\n"
+"QPushButton:hover{ background-color: #b4bd3a;}\n"
+"QPushButton:pressed{  background-color:  #a5ad35;}")
+        self.pushButton_start.setFlat(True)
         self.pushButton_start.setObjectName("pushButton_start")
         self.verticalLayout.addWidget(self.pushButton_start)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
@@ -78,6 +131,7 @@ class Ui_mainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         mainWindow.setWindowTitle(_translate("mainWindow", "文本转语音"))
         self.pushButton_select_dir.setText(_translate("mainWindow", "选择路径"))
+        self.pushButtonlisten.setText(_translate("mainWindow", "试听声音"))
         self.pushButton_start.setText(_translate("mainWindow", "开始转换"))
         self.menu.setTitle(_translate("mainWindow", "帮助"))
         self.actionreadme.setText(_translate("mainWindow", "Readme"))
