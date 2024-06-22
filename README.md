@@ -8,3 +8,7 @@
 
 
 ![Alt text](image.png)
+
+
+好用的pyinstaller GUI工具
+https://github.com/zimolab/PyInstallerGUI
